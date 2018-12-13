@@ -1,7 +1,9 @@
-const initialState={
+import {fromJS} from 'inmutable';
+
+const initialState=fromJS({
   visibility:false,
   mediaId:null
-}
+})
 
 function modal(state=initialState,action){
   switch(action.type){
