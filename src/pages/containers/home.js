@@ -54,8 +54,11 @@ class Home extends Component {
 }
 
 function mapStateToProps(state,props){
+  const categories=state.data.categories.map((categoryId)=>{ //Aqui tendriamos los datos normalizados y es mas facil la busqueda
+    return state.data.entities.categories[categoryId]
+  })
   return {
-    categories:state.data.categories,
+    categories:categories,
     search:state.search
   }
 }
