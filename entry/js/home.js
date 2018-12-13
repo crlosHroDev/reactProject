@@ -8,9 +8,11 @@ import data from '../schemas/index'; //datos normalizados
 import {Provider} from 'react-redux';
 import {createStore,applyMiddleware} from 'redux';
 import reducer from '../reducers/index';
-import {Map as map  } from 'inmutable'
+import {Map as map  } from 'inmutable';
+import logger from 'redux-logger';
+import {composewithDevTools} from 'redux-devtools-extension';
 
-function logger({getState,dispatch}){
+/*function logger({getState,dispatch}){
     return (next)=>{
         return (action)=>{
             console.log('Este es mi viejo estado',getState().toJS())
@@ -20,7 +22,7 @@ function logger({getState,dispatch}){
             return value
         }
     }
-}
+}*/
 
 /*const logger=({getState,dispatch})=>next=>action=>{
     console.log('Este es mi viejo estado',getState().toJS())
@@ -44,7 +46,9 @@ function logger({getState,dispatch}){
 const store = createStore(
     reducer,
     map({}),
-    applyMiddleware(logger)
+    composeWithDevTools(
+     applyMiddleware(logger)
+    )    
     //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
