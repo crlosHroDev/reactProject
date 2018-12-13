@@ -3,7 +3,8 @@ const path=require ('path');
 module.exports={
   mode:'development',
   entry:{
-    'home':path.resolve(__dirname,'entry/js/home.js')
+    'home':path.resolve(__dirname,'entry/js/home.js'),
+    'redux':path.resolve(__dirname,'entry/js/redux.js')
   },
   output:{
     path:path.resolve(__dirname,'dist'),
