@@ -8,6 +8,9 @@ import HandleError from '../../error/containers/handle-error';
 import VideoPlayer from '../../player/containers/video-player';
 import {connect} from 'react-redux';
 import {List as list} from 'inmutable';
+import {openModal,close} from '../actions/index';
+
+
 class Home extends Component {
   /*state = {
     modalVisible: false,
@@ -17,20 +20,13 @@ class Home extends Component {
       modalVisible: true,
       media
     })*/
-      this.props.dispatch({
-        type:'OPEN_MODAL',
-        payload:{
-          mediaId:id
-        }
-      })
+      this.props.dispatch(openModal(id))
   }
   handleCloseModal = (event) => {
     /*this.setState({
       modalVisible: false,
     })*/
-    this.props.dispatch({
-      type:'CLOSE_MODAL'
-    })
+    this.props.dispatch(closeModal())
   }
   render() {
     return (
