@@ -6,10 +6,28 @@ import Home from '../../src/pages/containers/Home';
 // console.log('hola mundo')
 import data from '../schemas/index'; //datos normalizados
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import {createStore,applyMiddleware} from 'redux';
 import reducer from '../reducers/index';
 import {Map as map  } from 'inmutable'
 
+function logger({getState,dispatch}){
+    return (next)=>{
+        return (action)=>{
+            console.log('Este es mi viejo estado',getState().toJS())
+            console.log('vamos a enviar esta acción',action)
+            const value=next(action)
+            console.log('este es mi nuevo estado',getState().toJS())
+            return value
+        }
+    }
+}
+
+/*const logger=({getState,dispatch})=>next=>action=>{
+    console.log('Este es mi viejo estado',getState().toJS())
+    console.log('vamos a enviar esta acción',action)
+    const value=next(action)
+    console.log('este es mi nuevo estado',getState().toJS())
+} EMCA Script 6 */
 /*const initialState={
     data:{
         //...data
@@ -26,7 +44,8 @@ import {Map as map  } from 'inmutable'
 const store = createStore(
     reducer,
     map({}),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(logger)
+    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 console.log(store.getState())
