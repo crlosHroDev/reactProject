@@ -4,7 +4,7 @@ import {fromJS} from 'inmutable';
 const initialState=fromJS({
   entities:schema.entities,
   categories:schema.result.categories,
-  search:[]
+  search:''
 })
 
 
@@ -13,12 +13,13 @@ function data (state=initialState,action){
   switch(action.type){
     case 'SEARCH_VIDEO':{
       //action.payload.query
-      let results=[]
+      /*let results=[]
       if(action.payload.query){
         const list=state.data.categories[2].playlist;
         results = list.filter((item)=>{
           return item.author.includes(action.payload.query)
-         })      
+         })    */
+      return state.set('search',action.payload.query)//Forma de un mapa setearle unos datos o modificar un dato
       }
 
       return {
