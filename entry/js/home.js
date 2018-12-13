@@ -7,16 +7,20 @@ import Home from '../../src/pages/containers/Home';
 import data from '../schemas/index'; //datos normalizados
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import reducer from '../reducers/data';
+import reducer from '../reducers/index';
 
-const initialState={
+/*const initialState={
     data:{
         //...data
         entities:data.entities,
-        categories:data.result.categories
+        categories:data.result.categories,
+        search:[],
     },
-    search:[]
-}
+    modal:{
+       visibility:false,
+       mediaId:null
+    }
+}*/
 
 const store = createStore(
     reducer,
