@@ -10,6 +10,7 @@ import {createStore,applyMiddleware} from 'redux';
 import reducer from '../reducers/index';
 import {Map as map  } from 'inmutable';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 import {composewithDevTools} from 'redux-devtools-extension';
 
 /*function logger({getState,dispatch}){
@@ -47,7 +48,10 @@ const store = createStore(
     reducer,
     map({}),
     composeWithDevTools(
-     applyMiddleware(logger)
+     applyMiddleware(
+         logger,
+         thunk
+     )
     )    
     //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
