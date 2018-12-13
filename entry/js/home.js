@@ -4,6 +4,7 @@ import Home from '../../src/pages/containers/Home';
 // import Playlist from '../../src/playlist/components/playlist'
 import data from '../../src/api.json';
 // console.log('hola mundo')
+import normalizedData from '../schemas/index';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import reducer from '../reducers/data';
